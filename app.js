@@ -19,12 +19,10 @@ v1.use(function (req, res, next) {
     next();
 });
 
-v1.use('/signUp', UserController);
+v1.use('/user', UserController);
+v1.use('/movies', MovieControlller);
 
 app.use('/', v1);
-
-// v1.use('/movies', MovieControlller);
-
 
 app.use((request, response, next) => {
     let err = new Error('Not Found');

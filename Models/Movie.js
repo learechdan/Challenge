@@ -13,8 +13,8 @@ var MovieSchema = new mongoose.Schema({
     genre: {
         type: String,
         enum: ['Comedy', 'Romance', 'Drama']
-    },  // check enumerator
-    generalRating: Number // might be used to calculate avgRating and help Sorting
+    },
+    generalRating: Number // might be used to calculate avgRating and help Sorting for later
 });
 
 MovieSchema.pre('save', function (next) {
@@ -33,6 +33,4 @@ MovieSchema.pre('save', function (next) {
 
 var Movie = mongoose.model('Movies', MovieSchema, 'Movies');
 
-module.exports = {
-    Movie: Movie
-};
+module.exports = Movie;
