@@ -2,17 +2,13 @@ var express = require('express');
 
 var app = express();
 app.use(express.json());
-// let router = app;
 // var db = require('./dbConnection');
 var bodyParser = require('body-parser');
-// var CONF = require('./config');
-// var User = require("./models/User");
 var v1 = express.Router();
 
 
-// var SignUp = require('./Controllers/User/SignUp');
 var UserController = require('./Controllers/User');
-// var MovieController = require('./Controllers/Movie');
+var MovieController = require('./Controllers/Movie');
 
 v1.use(function (req, res, next) {
     req.header("Access-Control-Allow-Origin", "*");
@@ -20,7 +16,7 @@ v1.use(function (req, res, next) {
 });
 
 v1.use('/user', UserController);
-v1.use('/movies', MovieControlller);
+v1.use('/movies', MovieController);
 
 app.use('/', v1);
 

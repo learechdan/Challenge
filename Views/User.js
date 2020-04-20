@@ -16,17 +16,17 @@ signUp = async function (req, user) {
             return error;
         }
         // Mongo call
-        // User.findOne({ username: req.body.username }, function (error, user) {
-        //     if (error) {
-        //         console.log(error);
-        //         error = { status: 401, message: "Missing information" };
-        //         return error;
-        //     }
-        //     else if (user) {
-        //         var error = { status: 401, message: "User already exists" };
-        //         return error;
-        //     }
-        // })
+        User.findOne({ username: req.body.username }, function (error, user) {
+            if (error) {
+                console.log(error);
+                error = { status: 401, message: "Missing information" };
+                return error;
+            }
+            else if (user) {
+                var error = { status: 401, message: "User already exists" };
+                return error;
+            }
+        })
         var user = new User();
         await setUser(req.body, user);
         await user.save(); // saves user in mongo
